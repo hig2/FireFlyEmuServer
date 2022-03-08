@@ -1,5 +1,6 @@
 import java.net.*;
 import java.io.*;
+import java.util.Arrays;
 
 public class TestServer extends Thread {
     private ServerSocket serverSocket;
@@ -66,7 +67,11 @@ public class TestServer extends Thread {
     }
 
     public static void main(String [] args) {
-        int port = 80;
+        int port = 1801;
+        if(args.length > 0){
+           port = Integer.parseInt(args[0]);
+        }
+
         try {
             Thread t = new TestServer(port);
             t.start();
